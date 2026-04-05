@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from metrics import compare_metrics
+from visualizer import generate_base64_charts
 import numpy as np
 
 app = Flask(__name__)
@@ -45,8 +46,9 @@ def run():
     if not (1 <= time_steps <= 168):
         return jsonify({"error": "time_steps must be between 1 and 168."}), 400
 
-    result = compare_metrics(extra_arrivals=arrivals, time_steps=time_steps)
-    return jsonify(result), 200
+    metrics = compare_metrics(extra_arrivals=arrivals, time_steps=time_steps)
+    charts  = generate_base64_charts(metrics)
+    return jsonify({**metrics, "charts": charts}), 200
 
 
 @app.route("/health", methods=["GET"])
