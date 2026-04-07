@@ -31,12 +31,12 @@ def run():
 
     # now use data
     arrivals = {
-        "North": data.get("north", 30),
-        "South": data.get("south", 25),
-        "East":  data.get("east",  20),
-        "West":  data.get("west",  35),
+        "North": int(data.get("north", 30)),
+        "South": int(data.get("south", 25)),
+        "East":  int(data.get("east",  20)),
+        "West":  int(data.get("west",  35)),
     }
-    time_steps = data.get("time_steps", 24)
+    time_steps = int(data.get("time_steps", 24))
 
     try:
         arrivals   = {k: int(v) for k, v in arrivals.items()}
