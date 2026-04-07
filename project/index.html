@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <title>TrafficSim</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            border: "hsl(217.2 32.6% 17.5%)",
+            input: "hsl(217.2 32.6% 17.5%)",
+            ring: "hsl(212.7 26.8% 83.9%)",
+            background: "hsl(222.2 84% 4.9%)",
+            foreground: "hsl(210 40% 98%)",
+            primary: { DEFAULT: "hsl(210 40% 98%)", foreground: "hsl(222.2 47.4% 11.2%)" },
+            secondary: { DEFAULT: "hsl(217.2 32.6% 17.5%)", foreground: "hsl(210 40% 98%)" },
+            destructive: { DEFAULT: "hsl(0 62.8% 30.6%)", foreground: "hsl(210 40% 98%)" },
+            muted: { DEFAULT: "hsl(217.2 32.6% 17.5%)", foreground: "hsl(215 20.2% 65.1%)" },
+            accent: { DEFAULT: "hsl(217.2 32.6% 17.5%)", foreground: "hsl(210 40% 98%)" },
+            card: { DEFAULT: "hsl(222.2 84% 4.9%)", foreground: "hsl(210 40% 98%)" },
+          },
+          borderRadius: { lg: "0.5rem", md: "calc(0.5rem - 2px)", sm: "calc(0.5rem - 4px)" }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-background text-foreground min-h-screen flex flex-col antialiased">
 
-<div class="app">
-  <header>
-    <div class="header-inner">
-      <div class="logo">
-        <span class="logo-icon"></span>
-        <span class="logo-text">TrafficSim</span>
+  <header class="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div class="container mx-auto max-w-4xl px-6 py-4 flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full border-2 border-primary flex items-center justify-center">
+          <div class="w-2 h-2 bg-primary rounded-full"></div>
+        </div>
+        <span class="font-semibold text-lg tracking-tight">TrafficSim</span>
       </div>
-      <p class="tagline">Roundabout flow analysis</p>
+      <p class="text-sm text-muted-foreground ml-2 border-l border-border pl-4 hidden sm:block">Roundabout flow analysis</p>
     </div>
   </header>
 
-  <main>
-    <section class="form-section">
-      <form id="simForm" class="sim-form"></form>
+  <main class="container mx-auto max-w-4xl px-6 py-10 flex-1">
+    
+    <section class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
+      <div class="p-6">
+        <form id="simForm" class="space-y-6"></form>
+      </div>
     </section>
 
-    <div id="error" class="error-banner" style="display:none;"></div>
+    <div id="error" class="hidden mt-6 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive font-medium"></div>
 
-    <div id="loader" class="loader-wrap" style="display:none;">
-      <div class="spinner"></div>
-      <p>Running simulation…</p>
+    <div id="loader" class="hidden py-16 flex-col items-center justify-center space-y-4">
+      <div class="w-8 h-8 rounded-full border-4 border-muted border-t-primary animate-spin"></div>
+      <p class="text-sm text-muted-foreground animate-pulse">Running simulation…</p>
     </div>
 
-    <section id="results" class="results" style="display:none;"></section>
+    <section id="results" class="hidden mt-8 space-y-6"></section>
+    
   </main>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
