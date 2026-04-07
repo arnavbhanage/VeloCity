@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TrafficSim</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon"></span>
+        <span class="logo-text">TrafficSim</span>
+      </div>
+      <p class="tagline">Roundabout flow analysis</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <form id="simForm" class="sim-form"></form>
+    </section>
+
+    <div id="error" class="error-banner" style="display:none;"></div>
+
+    <div id="loader" class="loader-wrap" style="display:none;">
+      <div class="spinner"></div>
+      <p>Running simulation…</p>
+    </div>
+
+    <section id="results" class="results" style="display:none;"></section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

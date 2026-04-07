@@ -22,17 +22,21 @@ app.json_provider_class = NumpyEncoder
 app.json = NumpyEncoder(app)
 
 
+from flask import request
+
 @app.route("/run", methods=["POST"])
 def run():
-    body = request.get_json()
+    data = request.get_json()
+    print(data)  # debug line
 
+    # now use data
     arrivals = {
-        "north": body.get("north", 30),
-        "south": body.get("south", 25),
-        "east":  body.get("east",  20),
-        "west":  body.get("west",  35),
+        "North": data.get("north", 30),
+        "South": data.get("south", 25),
+        "East":  data.get("east",  20),
+        "West":  data.get("west",  35),
     }
-    time_steps = body.get("time_steps", 24)
+    time_steps = data.get("time_steps", 24)
 
     try:
         arrivals   = {k: int(v) for k, v in arrivals.items()}
