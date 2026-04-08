@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
 
   const formData = Object.fromEntries(new FormData(form).entries());
 
-  loader.style.display = "flex"; // Changed from block to flex for tailwind centering
+  loader.style.display = "flex"; 
   errorBox.style.display = "none";
   resultsDiv.style.display = "none";
 
