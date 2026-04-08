@@ -40,7 +40,7 @@ def run_simulation(
 
         if extra_arrivals:
             for dir_name, total in extra_arrivals.items():
-                d = DIR_INDEX[dir_name]
+                d = DIR_INDEX[dir_name.lower()]
                 current_rate_sum = arrival_rates[d].sum() * time_steps
                 if current_rate_sum > 0:
                     scale = total / current_rate_sum

@@ -58,7 +58,7 @@ def compute_all(result):
 def compare_metrics(extra_arrivals=None, time_steps=24, seed=42):
     results = compare_strategies(extra_arrivals, time_steps=time_steps, seed=seed)
     return {
-        "baseline":  compute_all(results["baseline"]),
+        "baseline":  compute_all(results["baseline"]),  
         "optimized": compute_all(results["optimized"]),
     }
 
